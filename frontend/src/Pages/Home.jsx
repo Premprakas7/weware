@@ -9,16 +9,14 @@ const Home = () => {
     const data=useSelector(state=>state.reducer.data.user);
 
     useEffect(()=>{
-        if(data.length===0){
             dispatch(getData())
-        }
-    },[dispatch,data.length])
-
+    },[dispatch])
+    
     const handleDelete = (_id) => {
         let newData = data.filter((item) => item._id !== _id);
         dispatch(deleteItem(_id, newData)).then(() => dispatch(getData()));
       };
-      
+      console.log(data)
   return (
     <div>
         <Heading>Dashboard</Heading>
@@ -39,9 +37,9 @@ const Home = () => {
                     </Tr>
                 </Thead>
                 <Tbody>
-                    {data.map((e)=>
+                    {data?.map((e)=>
                     <Tr key={e.id}>
-                        <Td>{e.name}</Td>
+                        <Td >{e.name}</Td>
                         <Td><Image src={e.img} boxSize='10rem' alt="" /></Td>
                         <Td><Button><RouteLink to={`/edit/${e._id}`}>Update</RouteLink></Button></Td>
                         <Td><Button onClick={()=>handleDelete(e._id)}>Delete</Button></Td>
