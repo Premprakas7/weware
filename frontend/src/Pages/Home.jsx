@@ -1,4 +1,4 @@
-import { Button, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Image } from '@chakra-ui/react'
+import { Button, Heading, Table, TableContainer, Tbody, Td, Th, Thead, Tr, Image, Flex,Text } from '@chakra-ui/react'
 import React, { useEffect } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getData,deleteItem } from '../Redux/action';
@@ -22,7 +22,11 @@ const Home = () => {
   return (
     <div>
         <Heading>Dashboard</Heading>
-        <Button><RouteLink to="/post">Post</RouteLink></Button>
+        <Flex marginLeft="5rem" gap="1rem">
+            <Text>Post Data ?</Text>
+            <Button><RouteLink to="/post">Post</RouteLink></Button>
+
+        </Flex>
 
         <TableContainer>
             <Table>
@@ -39,7 +43,7 @@ const Home = () => {
                     <Tr>
                         <Td>{e.name}</Td>
                         <Td><Image src={e.img} boxSize='10rem' alt="" /></Td>
-                        <Td><Button>Update</Button></Td>
+                        <Td><Button><RouteLink to={`/edit/${e._id}`}>Update</RouteLink></Button></Td>
                         <Td><Button onClick={()=>handleDelete(e._id)}>Delete</Button></Td>
                     </Tr>
                     )}
