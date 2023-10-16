@@ -27,12 +27,11 @@ const Update = () => {
 
     useEffect(()=>{
         if(data){
-          const currentitems=data.find((item)=> item._id === id);
+          const currentitems=data.find((item)=> item._id === (id));
           if(currentitems){
             setName(currentitems.name);
             setImg(currentitems.img);
-          }
-        }
+         }}
       },[data,id])
   return (
     <div>
