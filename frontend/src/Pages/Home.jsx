@@ -40,7 +40,7 @@ const Home = () => {
                 </Thead>
                 <Tbody>
                     {data.map((e)=>
-                    <Tr>
+                    <Tr key={e.id}>
                         <Td>{e.name}</Td>
                         <Td><Image src={e.img} boxSize='10rem' alt="" /></Td>
                         <Td><Button><RouteLink to={`/edit/${e._id}`}>Update</RouteLink></Button></Td>
